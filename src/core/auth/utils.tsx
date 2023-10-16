@@ -5,6 +5,16 @@ const TOKEN = 'token';
 export type TokenType = {
   access: string;
   refresh: string;
+  user: string;
+};
+
+export type LoginType = RegisterType & {
+  provider?: 'github';
+};
+
+export type RegisterType = {
+  email: string;
+  password: string;
 };
 
 export const getToken = () => getItem<TokenType>(TOKEN);
