@@ -11,14 +11,15 @@ import {
   colors,
   Feed as FeedIcon,
   Settings as SettingsIcon,
-  Style as StyleIcon,
+  Alarm as AlarmIcon,
 } from '@/ui';
 
 import { FeedNavigator } from './feed-navigator';
+import { StyleNavigator } from './style-navigator';
 
 type TabParamList = {
-  Style: undefined;
-  FeedNavigator: undefined;
+  Alarm: undefined;
+  Zone: undefined;
   Settings: undefined;
 };
 
@@ -35,8 +36,8 @@ type TabIconsType = {
 const Tab = createBottomTabNavigator<TabParamList>();
 
 const tabsIcons: TabIconsType = {
-  Style: (props: SvgProps) => <StyleIcon {...props} />,
-  FeedNavigator: (props: SvgProps) => <FeedIcon {...props} />,
+  Alarm: (props: SvgProps) => <AlarmIcon {...props} />,
+  Zone: (props: SvgProps) => <FeedIcon {...props} />,
   Settings: (props: SvgProps) => <SettingsIcon {...props} />,
 };
 
@@ -47,14 +48,14 @@ export type TabList<T extends keyof TabParamList> = {
 
 const tabs: TabType[] = [
   {
-    name: 'Style',
-    component: Style,
-    label: 'Style',
+    name: 'Alarm',
+    component: StyleNavigator,
+    label: 'Alarm',
   },
   {
-    name: 'FeedNavigator',
+    name: 'Zone',
     component: FeedNavigator,
-    label: 'Feed',
+    label: 'Zone',
   },
   {
     name: 'Settings',
