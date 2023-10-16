@@ -20,6 +20,7 @@ export const showErrorMessage = (message: string = 'Something went wrong ') => {
     message,
     type: 'danger',
     duration: 4000,
+    hideStatusBar: true,
   });
 };
 
