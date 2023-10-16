@@ -1,6 +1,12 @@
 import { MMKV } from 'react-native-mmkv';
 
-export const storage = new MMKV();
+export const storage = new MMKV({ id: 'supabase-storage' });
+
+export const mmkvStorageConfigSupabase = {
+  setItem: (key, data) => storage.set(key, data),
+  getItem: (key) => storage.getString(key),
+  removeItem: (key) => storage.delete(key),
+};
 
 export function getItem<T>(key: string): T {
   const value = storage.getString(key);
