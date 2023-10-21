@@ -2,18 +2,22 @@ import { useNavigation } from '@react-navigation/native';
 import { FlashList } from '@shopify/flash-list';
 import React from 'react';
 
-import type { Post } from '@/api';
-import { usePosts } from '@/api';
+import { fetchPosts, Post } from '@/api';
 import { Button, EmptyList, FocusAwareStatusBar, Text, View } from '@/ui';
 
 import { Card } from './card';
 import { Title } from '../style/title';
 import useAlarmStore from '@/core/alarms';
 import { showMessage } from 'react-native-flash-message';
+import { useQuery } from '@tanstack/react-query';
 
 export const Feed = () => {
   const [isSyncing, setIsSyncing] = React.useState(false);
-  const { data, isLoading, isError } = usePosts();
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+  });
+
   const syncAlarms = useAlarmStore((state) => state.syncAlarms);
   const { navigate } = useNavigation();
 
@@ -43,7 +47,7 @@ export const Feed = () => {
     );
   }
   return (
-    <View className="flex-1 ">
+    <View className="flex-1 px-4 pt-1">
       <FocusAwareStatusBar />
       <Title text="Synchronize Alarms" />
       <Button
@@ -59,7 +63,7 @@ export const Feed = () => {
         onPress={() => navigate('AddAlarm')}
       />
 
-      <Title text="Comunicados" />
+      <Title text={`Press Releases ${data?.length ?? ''}`} />
       <FlashList
         data={data}
         renderItem={renderItem}

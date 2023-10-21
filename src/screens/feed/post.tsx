@@ -1,14 +1,16 @@
 import { useRoute } from '@react-navigation/native';
 import * as React from 'react';
 
-import { usePost } from '@/api';
+import { fetchPost } from '@/api';
 import type { RouteProp } from '@/navigation/types';
 import { ActivityIndicator, FocusAwareStatusBar, Text, View } from '@/ui';
+import { useQuery } from '@tanstack/react-query';
 
 export const Post = () => {
   const { params } = useRoute<RouteProp<'Post'>>();
-  const { data, isLoading, isError } = usePost({
-    variables: { id: params.id },
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['posts', params.id],
+    queryFn: () => fetchPost(params.id),
   });
 
   if (isLoading) {
@@ -18,7 +20,7 @@ export const Post = () => {
       </View>
     );
   }
-  if (isError) {
+  if (isError || !data) {
     return (
       <View className="flex-1  justify-center">
         <FocusAwareStatusBar />
@@ -30,9 +32,11 @@ export const Post = () => {
   }
 
   return (
-    <View className="flex-1 ">
+    <View className="flex-1 overflow-hidden bg-neutral-200 p-2 shadow-xl dark:bg-charcoal-900">
       <FocusAwareStatusBar />
-      <Text variant="h2">{data.title}</Text>
+      <Text variant="h2" className="mb-4 font-bold">
+        {data.title}
+      </Text>
       <Text variant="md">{data.body} </Text>
     </View>
   );

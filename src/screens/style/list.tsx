@@ -26,8 +26,6 @@ export const Style = () => {
   ]);
   const { navigate } = useNavigation();
 
-  console.log('🚀 ~ file: list.tsx:10 ~ AlarmsList ~ alarms:', alarms);
-
   const renderItem = React.useCallback(
     ({ item }: { item: AlarmType }) => (
       <Pressable
@@ -72,7 +70,7 @@ export const Style = () => {
     <>
       <FocusAwareStatusBar />
       <ScrollView>
-        <View className="flex-1  px-4 pt-10">
+        <View className="flex-1 px-4 pt-4">
           <View className="flex-1 ">
             <FocusAwareStatusBar />
             <FlashList
