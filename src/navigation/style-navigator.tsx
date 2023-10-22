@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 
-import { AddAlarm, Style, Alarm } from '@/screens';
+import { AddAlarm, Style, AlarmC } from '@/screens';
 
 export type StyleStackParamList = {
   Style: undefined;
-  Alarm: undefined;
+  AlarmC: undefined;
   AddAlarm: undefined;
 };
 
@@ -20,7 +20,7 @@ export const StyleNavigator = () => {
         }}
       >
         <Stack.Screen name="Style" component={Style} />
-        <Stack.Screen name="Alarm" component={Alarm} />
+        <Stack.Screen name="AlarmC" component={AlarmC} />
       </Stack.Group>
       <Stack.Screen
         name="AddAlarm"

@@ -98,7 +98,7 @@ export const AddAlarm = () => {
         <Title text="Ranges" />
         {rangeList.map((rangeItem, index) => {
           return (
-            <View id={uuid()}>
+            <View key={uuid()}>
               <Title text={`${index + 1}`} />
               <Select
                 label="Select"

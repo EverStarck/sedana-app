@@ -5,7 +5,7 @@ import useAlarmStore from '@/core/alarms';
 
 import { AlarmCard } from './alarm-card';
 
-export const Alarm = () => {
+export const AlarmC = () => {
   const [alarm] = useAlarmStore((state) => [state.alarm]);
 
   return (

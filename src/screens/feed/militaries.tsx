@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FlashList } from '@shopify/flash-list';
 import React from 'react';
 
-import { Image, ScrollView, Text, View } from '@/ui';
+import { EmptyList, Image, ScrollView, Text, View } from '@/ui';
 
 import { Title } from '../style/title';
 import { showMessage } from 'react-native-flash-message';
@@ -15,40 +15,10 @@ export const Militaries = () => {
     queryKey: ['militaries'],
     queryFn: fetchMilitaries,
   });
-  const { navigate } = useNavigation();
 
-  const renderItem = React.useCallback(
-    ({ item }: { item: Military }) => (
-      <>
-        <View className="flex-1 flex-row w-full">
-          <View className="w-4/6 justify-center content-center">
-            <Text variant="md" numberOfLines={1} className="font-bold wm">
-              {item.name}
-            </Text>
-            <Text variant="xs" numberOfLines={1}>
-              range: {item.range}
-            </Text>
-            {/* <Text variant="xs" numberOfLines={1}>
-          Total time: {item.ranges.reduce((acc, { time }) => acc + time, 0)}
-          s
-        </Text> */}
-          </View>
-          <View className="w-2/6 gap-y-1 items-center justify-center content-center flex-row flex-wrap">
-            {/* {item.ranges.map(({ range }) => (
-          <Image
-            key={range}
-            className="h-6 w-16 object-contain"
-            source={{
-              uri: getImageUrl(range),
-            }}
-          />
-        ))} */}
-          </View>
-        </View>
-      </>
-    ),
-    [navigate]
-  );
+  if (isLoading) {
+    return <EmptyList isLoading={isLoading} />;
+  }
 
   if (isError || !data) {
     return (

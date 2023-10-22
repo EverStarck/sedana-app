@@ -12,10 +12,6 @@ import {
 } from '@/ui';
 import useAlarmStore from '@/core/alarms';
 import { AlarmType } from '@/core/alarms/utils';
-import { TextVariants } from './text-variants';
-import { ColorVariants } from './color-variants';
-import { InputVariants } from './input-variants';
-import { ButtonVariants } from './button-variants';
 import { Pressable, Image } from '@/ui';
 import { getImageUrl } from '@/utils';
 
@@ -33,7 +29,7 @@ export const Style = () => {
         className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl bg-neutral-200 dark:bg-charcoal-900"
         onPress={() => {
           setAlarm(item);
-          navigate('Alarm');
+          navigate('AlarmC');
         }}
       >
         <View className="flex-1 flex-row w-full">
@@ -86,10 +82,6 @@ export const Style = () => {
               onPress={() => navigate('AddAlarm')}
             />
           </View>
-          <TextVariants />
-          <ColorVariants />
-          <InputVariants />
-          <ButtonVariants />
         </View>
       </ScrollView>
     </>
