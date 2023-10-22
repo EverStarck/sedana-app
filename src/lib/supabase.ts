@@ -6,9 +6,7 @@ import { createClient } from '@supabase/supabase-js';
 import { mmkvStorageConfigSupabase } from '@/core/storage';
 
 const supabaseUrl = Env.SUPABASE_URL;
-console.log('🚀 ~ file: supabase.ts:7 ~ supabaseUrl:', supabaseUrl);
 const supabaseAnonKey = Env.SUPABASE_KEY;
-console.log('🚀 ~ file: supabase.ts:9 ~ supabaseAnonKey:', supabaseAnonKey);
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {

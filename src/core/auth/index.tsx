@@ -38,11 +38,9 @@ const _useAuth = create<AuthState>((set, get) => ({
           `${Env.SUPABASE_URL}/auth/v1/authorize?provider=${formData.provider}&redirect_to=${redirectUri}`,
           redirectUri
         );
-        console.log('🚀 ~ file: index.tsx:37 ~ signIn: ~ response:', response);
 
         if (response.type === 'success') {
           const url = response.url;
-          console.log('🚀 ~ file: index.tsx:46 ~ signIn: ~ url:', url);
           const params = url.split('#')[1];
           const accessToken = params.split('&')[0].split('=')[1];
           const refreshToken = params.split('&')[4].split('=')[1];
@@ -51,8 +49,7 @@ const _useAuth = create<AuthState>((set, get) => ({
             access_token: accessToken,
             refresh_token: refreshToken,
           });
-          console.log('🚀 ~ file: index.tsx:46 ~ signIn: ~ error:', error);
-          console.log('🚀 ~ file: index.tsx:49 ~ signIn: ~ data:', data);
+
           if (error) {
             return { ok: false, message: error.message };
           }
