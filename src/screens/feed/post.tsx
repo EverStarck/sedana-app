@@ -34,7 +34,7 @@ export const Post = () => {
   return (
     <View className="flex-1 overflow-hidden bg-neutral-200 p-2 shadow-xl dark:bg-charcoal-900">
       <FocusAwareStatusBar />
-      <Text variant="h2" className="mb-4 font-bold">
+      <Text variant="h2" className="mb-4 font-bold text-center">
         {data.title}
       </Text>
       <Text variant="md">{data.body} </Text>

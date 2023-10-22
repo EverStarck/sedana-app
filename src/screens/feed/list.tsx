@@ -60,7 +60,7 @@ export const Feed = () => {
       <Button
         label="View Militaries"
         variant="secondary"
-        onPress={() => navigate('AddAlarm')}
+        onPress={() => navigate('Militaries')}
       />
 
       <Title text={`Press Releases ${data?.length ?? ''}`} />

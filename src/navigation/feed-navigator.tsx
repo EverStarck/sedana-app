@@ -2,10 +2,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 
 import { Feed, Post } from '@/screens';
+import { Militaries } from '@/screens/feed/militaries';
 
 export type FeedStackParamList = {
   Feed: undefined;
   Post: { id: number };
+  Militaries: undefined;
 };
 
 const Stack = createNativeStackNavigator<FeedStackParamList>();
@@ -25,6 +27,13 @@ export const FeedNavigator = () => {
         component={Post}
         options={{
           title: 'Press Release',
+        }}
+      />
+      <Stack.Screen
+        name="Militaries"
+        component={Militaries}
+        options={{
+          title: 'Militaries',
         }}
       />
     </Stack.Navigator>
