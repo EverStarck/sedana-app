@@ -113,8 +113,8 @@ const _useAuth = create<AuthState>((set, get) => ({
       status: 'signIn',
       token,
     });
-
     setToken(token);
+    hydrateAlarms();
 
     return { ok: true, message: 'Account created successfully.' };
   },
