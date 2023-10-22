@@ -18,6 +18,7 @@ interface AlarmsState {
     error: boolean;
     message: string;
   }>;
+  hydrate: () => void;
 }
 
 const useAlarmStore = create<AlarmsState>((set) => ({
@@ -48,6 +49,12 @@ const useAlarmStore = create<AlarmsState>((set) => ({
       message,
     };
   },
+  hydrate: () => {
+    const alarms = getAlarms();
+    set({ alarms });
+  },
 }));
 
 export default useAlarmStore;
+
+export const hydrateAlarms = () => useAlarmStore.getState().hydrate();

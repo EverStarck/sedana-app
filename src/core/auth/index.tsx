@@ -6,6 +6,7 @@ import { createSelectors } from '../utils';
 import type { TokenType, LoginType, RegisterType } from './utils';
 import { getToken, removeToken, setToken } from './utils';
 import { Env } from '@env';
+import { hydrateAlarms } from '@/core/alarms';
 
 interface AuthState {
   token: TokenType | null;
@@ -61,8 +62,11 @@ const _useAuth = create<AuthState>((set, get) => ({
             refresh: data.session?.refresh_token || '',
             user: data.user?.email || '',
           };
+
           set({ status: 'signIn', token });
           setToken(token);
+          hydrateAlarms();
+
           return { ok: true, message: 'Login successfully.' };
         }
       } catch (error) {
@@ -82,12 +86,12 @@ const _useAuth = create<AuthState>((set, get) => ({
     }
 
     const token = {
-      access: data.session?.access_token || '',
-      refresh: data.session?.refresh_token || '',
       user: data.user?.email || '',
     };
+
     set({ status: 'signIn', token });
     setToken(token);
+    hydrateAlarms();
 
     return { ok: true, message: 'Login successfully.' };
   },
@@ -102,8 +106,6 @@ const _useAuth = create<AuthState>((set, get) => ({
     }
 
     const token = {
-      access: data.session?.access_token || '',
-      refresh: data.session?.refresh_token || '',
       user: data.user?.email || '',
     };
 
@@ -123,7 +125,6 @@ const _useAuth = create<AuthState>((set, get) => ({
   hydrate: () => {
     try {
       const userToken = getToken();
-      console.log('🚀 ~ file: index.tsx:29 ~ userToken:', userToken);
       if (userToken !== null) {
         set({ status: 'signIn', token: userToken });
       } else {
