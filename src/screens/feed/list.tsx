@@ -47,7 +47,10 @@ export const Feed = () => {
     );
   }
   return (
-    <View className="flex-1 px-4 pt-1">
+    <View className="flex-1 px-4 pt-4">
+      <Text variant="lg" className="font-bold">
+        Zone
+      </Text>
       <FocusAwareStatusBar />
       <Title text="Synchronize Alarms" />
       <Button

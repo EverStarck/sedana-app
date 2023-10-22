@@ -20,16 +20,17 @@ export const Style = () => {
     state.alarms,
     state.setAlarm,
   ]);
+
   const { navigate } = useNavigation();
 
   const renderItem = React.useCallback(
     ({ item }: { item: AlarmType }) => (
       <Pressable
         id={item.id}
-        className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl bg-neutral-200 dark:bg-charcoal-900"
+        className="my-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl bg-neutral-200 dark:bg-charcoal-900"
         onPress={() => {
           setAlarm(item);
-          navigate('AlarmC');
+          navigate('AlarmC', { name: item.name });
         }}
       >
         <View className="flex-1 flex-row w-full">
@@ -49,7 +50,8 @@ export const Style = () => {
             {item.ranges.map(({ range }) => (
               <Image
                 key={range}
-                className="h-6 w-16 object-contain"
+                style={{ width: 60, height: 25 }}
+                contentFit="contain"
                 source={{
                   uri: getImageUrl(range),
                 }}
@@ -67,7 +69,10 @@ export const Style = () => {
       <FocusAwareStatusBar />
       <ScrollView>
         <View className="flex-1 px-4 pt-4">
-          <View className="flex-1 ">
+          <Text variant="lg" className="font-bold">
+            Alarms
+          </Text>
+          <View className="flex-1">
             <FocusAwareStatusBar />
             <FlashList
               data={alarms}

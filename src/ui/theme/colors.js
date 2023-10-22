@@ -1,6 +1,7 @@
 module.exports = {
   white: '#ffffff',
   black: '#000000',
+  sub: '#b59161',
   charcoal: {
     50: '#F2F2F2',
     100: '#E5E5E5',
@@ -33,7 +34,7 @@ module.exports = {
     200: '#FFA766',
     300: '#FF984C',
     400: '#FF8933',
-    500: '#FF7B1A',
+    500: '#9d2449',
     600: '#FF6C00',
     700: '#E56100',
     800: '#CC5600',

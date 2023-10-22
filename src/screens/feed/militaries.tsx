@@ -44,7 +44,7 @@ export const Militaries = () => {
                   <View className="flex-1 flex-row w-full gap-6">
                     <View className="w-2/6 gap-y-1 items-center justify-center content-center flex-row flex-wrap">
                       <Image
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain rounded-sm"
                         source={{
                           uri: m.photo,
                         }}
@@ -60,7 +60,8 @@ export const Militaries = () => {
                       </Text>
                       <Text variant="sm">{m.desc}</Text>
                       <Image
-                        className="h-5 w-14 object-contain rounded-sm"
+                        style={{ width: 60, height: 25 }}
+                        contentFit="contain"
                         source={{
                           uri: getImageUrl(m.range),
                         }}

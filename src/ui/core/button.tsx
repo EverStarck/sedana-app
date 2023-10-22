@@ -28,7 +28,7 @@ export const buttonVariants: BVariant = {
     indicator: 'text-white',
   },
   secondary: {
-    container: 'bg-primary-600',
+    container: 'bg-primary-500',
     label: 'text-secondary-600',
     indicator: 'text-white',
   },

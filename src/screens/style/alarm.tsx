@@ -12,8 +12,7 @@ export const AlarmC = () => {
     <>
       <FocusAwareStatusBar />
       <ScrollView>
-        <View className="flex-1 px-4 pt-10">
-          <Text variant="h2">{alarm?.name}</Text>
+        <View className="flex-1 px-4 pt-4">
           {alarm?.ranges.map((range) => (
             <AlarmCard key={range.range} range={range} />
           ))}

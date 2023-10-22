@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { Text, View, Image } from '@/ui';
-import { AlarmType, RangeType, setAlarm } from '@/core/alarms/utils';
+import { RangeType } from '@/core/alarms/utils';
 import { getImageUrl } from '@/utils';
 import { Audio } from 'expo-av';
 
 export const AlarmCard = ({ range }: { range: RangeType }) => {
-  console.log('🚀 ~ file: alarm-card.tsx:26 ~ AlarmCard ~ range:', range);
   const [time, setTime] = React.useState(range.time);
+  const [color, setColor] = React.useState('#5cb85c');
   const timerRef = React.useRef(time);
 
   React.useEffect(() => {
@@ -24,6 +24,11 @@ export const AlarmCard = ({ range }: { range: RangeType }) => {
         await sound.playAsync();
       } else {
         setTime(timerRef.current);
+        setColor(
+          Math.floor(
+            ((range.time - timerRef.current) / range.time) * 255
+          ).toString(16)
+        );
       }
     }, 1000);
     return () => {
@@ -33,17 +38,24 @@ export const AlarmCard = ({ range }: { range: RangeType }) => {
 
   return (
     <View
-      className={`m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl ${
-        time <= 0 ? 'bg-red-600' : 'bg-green-600'
-      }`}
+      className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl"
+      style={{
+        backgroundColor:
+          time <= 0
+            ? '#d9534f'
+            : color === '#5cb85c'
+            ? '#5cb85c'
+            : `#${color}b85c`,
+      }}
     >
       <View className="flex-1 flex-row w-full">
         <View className="w-4/6 justify-center content-center gap-2">
-          <Text variant="xl" numberOfLines={1} className="font-bold wm">
+          <Text variant="h3" numberOfLines={2} className="font-bold wm">
             {range.range}
           </Text>
           <Image
-            className="h-16 w-40 object-contain"
+            style={{ width: 120, height: 50 }}
+            contentFit="contain"
             source={{
               uri: getImageUrl(range.range),
             }}

@@ -5,7 +5,7 @@ import { AddAlarm, Style, AlarmC } from '@/screens';
 
 export type StyleStackParamList = {
   Style: undefined;
-  AlarmC: undefined;
+  AlarmC: { name: string };
   AddAlarm: undefined;
 };
 
@@ -20,13 +20,17 @@ export const StyleNavigator = () => {
         }}
       >
         <Stack.Screen name="Style" component={Style} />
-        <Stack.Screen name="AlarmC" component={AlarmC} />
       </Stack.Group>
+      <Stack.Screen
+        name="AlarmC"
+        component={AlarmC}
+        options={({ route }) => ({ title: route.params.name })}
+      />
       <Stack.Screen
         name="AddAlarm"
         component={AddAlarm}
         options={{
-          title: 'Create New Alarm',
+          title: 'Add Alarm',
         }}
       />
     </Stack.Navigator>
