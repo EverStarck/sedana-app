@@ -68,7 +68,7 @@ export const Militaries = () => {
               <Title text={key.charAt(0).toUpperCase() + key.slice(1)} />
               {mil.map((m) => (
                 <View
-                  className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-6 shadow-xl dark:bg-charcoal-900"
+                  className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-6 shadow-xl bg-neutral-200 dark:bg-charcoal-900"
                   key={m.id}
                 >
                   <View className="flex-1 flex-row w-full gap-6">

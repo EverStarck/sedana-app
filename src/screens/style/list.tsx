@@ -30,7 +30,7 @@ export const Style = () => {
     ({ item }: { item: AlarmType }) => (
       <Pressable
         id={item.id}
-        className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl dark:bg-charcoal-900"
+        className="m-2 block overflow-hidden rounded-xl g-neutral-200 p-4 shadow-xl bg-neutral-200 dark:bg-charcoal-900"
         onPress={() => {
           setAlarm(item);
           navigate('Alarm');

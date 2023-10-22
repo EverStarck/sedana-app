@@ -23,12 +23,11 @@ export const Settings = () => {
       <FocusAwareStatusBar />
 
       <ScrollView>
-        <View className="flex-1 px-4 pt-16 ">
+        <View className="flex-1 px-4 pt-4">
           <Text variant="lg" className="font-bold">
             {translate('settings.title')}
           </Text>
           <ItemsContainer title="settings.generale">
-            <LanguageItem />
             <ThemeItem />
           </ItemsContainer>
 

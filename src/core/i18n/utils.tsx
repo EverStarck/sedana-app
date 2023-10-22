@@ -26,7 +26,7 @@ export const translate = memoize(
 
 export const changeLanguage = (lang: Language) => {
   i18n.changeLanguage(lang);
-  if (lang === 'ar') {
+  if (lang === 'es') {
     I18nManager.forceRTL(true);
   } else {
     I18nManager.forceRTL(false);
