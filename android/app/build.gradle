@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.myapp.development'
+    namespace 'com.sedenamondena.development'
     defaultConfig {
-        applicationId 'com.myapp.development'
+        applicationId 'com.sedenamondena.development'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

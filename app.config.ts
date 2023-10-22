@@ -6,11 +6,11 @@ import { ClientEnv, Env } from './env';
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   // TODO: Change this to prod - https://supabase.com/dashboard/project/vvdhmuxwmghnsitdgvis/auth/url-configuration
-  scheme: 'exp://192.168.100.52:8081',
+  scheme: 'sedenamondena://',
   name: Env.NAME,
   description: `${Env.NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
-  slug: 'yeah',
+  slug: 'sedenamondena',
   version: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -18,7 +18,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   splash: {
     image: './assets/splash.png',
     resizeMode: 'cover',
-    backgroundColor: '#2A3D4C',
+    backgroundColor: '#9d2449',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -32,7 +32,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#2A3D4C',
+      backgroundColor: '#9d2449',
     },
     package: Env.PACKAGE,
   },
