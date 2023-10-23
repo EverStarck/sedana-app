@@ -6,11 +6,11 @@ import { ClientEnv, Env } from './env';
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   // TODO: Change this to prod - https://supabase.com/dashboard/project/vvdhmuxwmghnsitdgvis/auth/url-configuration
-  scheme: 'sedenamondena://',
+  scheme: 'sedenamodena://',
   name: Env.NAME,
   description: `${Env.NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
-  slug: 'sedenamondena',
+  slug: 'sedenamodena',
   version: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',

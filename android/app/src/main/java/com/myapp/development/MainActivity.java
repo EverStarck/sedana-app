@@ -1,4 +1,4 @@
-package com.sedenamondena.development;
+package com.sedenamodena.development;
 
 import android.os.Build;
 import android.os.Bundle;

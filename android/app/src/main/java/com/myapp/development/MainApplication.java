@@ -1,4 +1,4 @@
-package com.sedenamondena.development;
+package com.sedenamodena.development;
 
 import android.app.Application;
 import android.content.res.Configuration;
