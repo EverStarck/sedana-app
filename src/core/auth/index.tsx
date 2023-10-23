@@ -7,6 +7,8 @@ import type { TokenType, LoginType, RegisterType } from './utils';
 import { getToken, removeToken, setToken } from './utils';
 import { Env } from '@env';
 import { hydrateAlarms } from '@/core/alarms';
+import * as Linking from 'expo-linking';
+import { makeRedirectUri } from 'expo-auth-session';
 
 interface AuthState {
   token: TokenType | null;
@@ -26,14 +28,7 @@ const _useAuth = create<AuthState>((set, get) => ({
     // https://docs.expo.dev/versions/latest/sdk/auth-session/
     if (formData.provider) {
       try {
-        // whatever route you want to deeplink to; make sure to configure in dashboard
-        // TODO: change this to prod
-        // https://supabase.com/dashboard/project/vvdhmuxwmghnsitdgvis/auth/url-configuration
-        const redirectUri = 'exp://192.168.100.52:8081/--/auth/callback';
-        console.log(
-          '🚀 ~ file: index.tsx:36 ~ signIn: ~ URL:',
-          `${Env.SUPABASE_URL}/auth/v1/authorize?provider=${formData.provider}&redirect_to=${redirectUri}`
-        );
+        const redirectUri = makeRedirectUri() || 'com.sedenamodena://';
         const response = await WebBrowser.openAuthSessionAsync(
           `${Env.SUPABASE_URL}/auth/v1/authorize?provider=${formData.provider}&redirect_to=${redirectUri}`,
           redirectUri
