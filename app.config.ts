@@ -5,8 +5,7 @@ import { ClientEnv, Env } from './env';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  // TODO: Change this to prod - https://supabase.com/dashboard/project/vvdhmuxwmghnsitdgvis/auth/url-configuration
-  scheme: 'sedenamodena://',
+  scheme: 'com.sedenamodena',
   name: Env.NAME,
   description: `${Env.NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
